@@ -83,8 +83,10 @@ class OADApp(QtWidgets.QWidget):
         # Sistemi yeniden başlat
         if sys.platform == "win32":
             subprocess.call(["shutdown", "/r", "/t", "0"])
-        elif sys.platform == "linux" or sys.platform == "darwin":
-            subprocess.call(["sudo", "reboot"])
+        elif sys.platform == "linux":
+            subprocess.call(["systemctl reboot"])
+        elif sys.platform == "darwin":
+            subprocess.call(["sudo shutdown -r now"])
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
